@@ -126,6 +126,8 @@ text-decoration: none; border-radius: 5px;">+ Nuevo Producto</a>
                 <th>Categoría</th>
                 <th>Stock</th>
                 <th>Precio Unitario</th>
+                <th>Acciones</th>
+                
             </tr>
         </thead>
 
