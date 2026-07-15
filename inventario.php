@@ -151,6 +151,25 @@ text-decoration: none; border-radius: 5px;">+ Nuevo Producto</a>
                 <td>
                     $<?php echo number_format($fila['precio'], 2); ?>
                 </td>
+              <td>
+                <td> $<?php echo number_format($fila['precio'], 2); ?> </td>
+                <a href="eliminar_producto.php?id=<?php echo $fila['id']; ?>"
+                class="btn-eliminar"
+                onclick="return confirm('¿Estás absolutamente seguro de eliminar el producto: <?php
+            echo $fila['nombre_producto']; ?>?');">
+                🗑️ Eliminar
+                </a>
+                </td>
+                </tr>
+                 <td>
+  <!-- NUEVO BOTÓN DE EDITAR -->
+  <a href="editar_producto.php?id=<?php echo $fila['id']; ?>" class="btn-editar">Editar</a>
+  
+  <!-- Botón de eliminar (ya lo tenías) -->
+  <a href="eliminar_producto.php?id=<?php echo $fila['id']; ?>" class="btn-eliminar" onclick="return confirm('¿Seguro?');">Eliminar</a>
+</td>
+                
+            <?php } // Fin del bucle while ?>
             </tr>
 
             <?php
