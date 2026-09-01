@@ -32,6 +32,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt2->bind_param("iiid", $id_nueva_compra, $producto_id, $cantidad, $precio_compra);
         $stmt2->execute();
         $stmt2->close();
+            // ... (código anterior de Fase 2)
+    
+
+            // --- FASE 3: ACTUALIZAR EL INVENTARIO FÍSICO ---
+            // Le ordenamos a MySQL que sume la cantidad comprada al stock actual del producto
+            $sql_stock = "UPDATE productos SET stock = stock + ? WHERE id = ?";
+            $stmt3 = $conn->prepare($sql_stock);
+
+            // Pasamos la variable $cantidad (que capturamos del formulario POST)
+            // y la variable $producto_id al marcador de posición.
+            $stmt3->bind_param("ii", $cantidad, $producto_id);
+            $stmt3->execute();
+            $stmt3->close();
+
+            // Redirigir con éxito al dashboard
+            header("Location: dashboard.php");
+            exit();
+            // ... (resto del código)
+
 
         // Redirigir con éxito
         header("Location: dashboard.php");
